@@ -1,0 +1,4 @@
+<resources>
+	<string name="app_name">Kanye Quotes</string>
+	<string name="loading_data_text_label">Loading Data...</string>
+</resources>
