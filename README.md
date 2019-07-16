@@ -16,10 +16,12 @@ Sample API Response
 ## Libraries Used 
 
 - Dagger2
+- Conductors
 - DataBinding 
 - RxJava
 - Retrofit
 - mosby-MVP
+
 
 
 ## Screenshots of the App 
