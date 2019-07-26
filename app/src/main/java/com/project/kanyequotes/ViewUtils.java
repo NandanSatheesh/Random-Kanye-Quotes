@@ -1,29 +1,18 @@
 package com.project.kanyequotes;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 public class ViewUtils {
-	public static Drawable getImageDrawable(int resId){
-		return KanyeQuotesApplication.getInstance().getResources().getDrawable(resId);
-	}
 
-	public static String getString(int resId){
-		return KanyeQuotesApplication.getInstance().getResources().getString(resId);
-	}
-
-	public static int getColor(int resId){
-		return KanyeQuotesApplication.getInstance().getResources().getColor(resId);
-	}
-
-	public static void makeToastShort(Context context,String message){
+	public static void makeToastShort(Context context, String message) {
 		Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 	}
-	public static void makeToastLong(Context context,String message){
+
+	public static void makeToastLong(Context context, String message) {
 		Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 	}
 

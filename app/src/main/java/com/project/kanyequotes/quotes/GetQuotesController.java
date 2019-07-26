@@ -7,9 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.hannesdorfmann.mosby3.mvp.conductor.MvpController;
-import com.project.kanyequotes.KanyeQuotesApplication;
+import com.project.kanyequotes.LandingActivity;
 import com.project.kanyequotes.R;
 import com.project.kanyequotes.ViewUtils;
 import com.project.kanyequotes.databinding.ConductorDisplayQuotesBinding;
@@ -72,7 +71,7 @@ public class GetQuotesController extends MvpController<GetQuotesContract.View, G
 	@NonNull
 	@Override
 	public GetQuotesPresenter createPresenter() {
-		return KanyeQuotesApplication.getInstance().getComponent().getQuotesPresenter();
+		return LandingActivity.getInstance().getGraphComponent().getQuotesPresenter();
 	}
 
 	@NonNull
