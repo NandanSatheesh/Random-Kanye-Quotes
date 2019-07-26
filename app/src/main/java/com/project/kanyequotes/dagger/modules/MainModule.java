@@ -1,4 +1,4 @@
-package com.project.kanyequotes.dagger;
+package com.project.kanyequotes.dagger.modules;
 
 import android.app.Application;
 import android.content.Context;

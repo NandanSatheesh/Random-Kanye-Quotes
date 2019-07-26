@@ -2,13 +2,15 @@ package com.project.kanyequotes.dagger;
 
 import android.app.Application;
 
+import com.project.kanyequotes.dagger.modules.MainModule;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {MainModule.class,NetworkModule.class})
-public interface Graph extends AppComponent, ModuleComponent{
+@Component(modules = {MainModule.class, AppComponent.NetworkModule.class})
+public interface Graph extends AppComponent, ModuleComponent {
 
 	final class Initializer {
 		public static Graph initialize(Application application) {

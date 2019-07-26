@@ -1,11 +1,10 @@
-package com.project.kanyequotes.dagger;
+package com.project.kanyequotes.dagger.modules;
 
 
 import com.project.kanyequotes.network.ApiEndPoints;
 import com.project.kanyequotes.network.GetQuotesApi;
 
 import javax.inject.Singleton;
-
 
 import dagger.Module;
 import dagger.Provides;
