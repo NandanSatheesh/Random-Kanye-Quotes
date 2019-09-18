@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.hannesdorfmann.mosby3.mvp.conductor.MvpController;
 import com.project.kanyequotes.KanyeQuotesApplication;
 import com.project.kanyequotes.R;
@@ -39,7 +38,6 @@ public class GetQuotesController extends MvpController<GetQuotesContract.View, G
 			@Override
 			public void onClick(View v) {
 				getPresenter().getRandomQuote();
-				ViewUtils.showLoadingDataSnackbar(v, getResources().getString(R.string.loading_data_text_label));
 			}
 		});
 	}
@@ -51,7 +49,8 @@ public class GetQuotesController extends MvpController<GetQuotesContract.View, G
 
 	@Override
 	public void showLoadingView() {
-		ViewUtils.setVisible(binding.loadingView);
+		ViewUtils.setVisible(binding.loadingAnimationView);
+		binding.loadingAnimationView.playAnimation();
 	}
 
 	@Override
@@ -61,7 +60,9 @@ public class GetQuotesController extends MvpController<GetQuotesContract.View, G
 
 	@Override
 	public void hideLoadingView() {
-		ViewUtils.setGone(binding.loadingView);
+		binding.loadingAnimationView.cancelAnimation();
+		ViewUtils.setGone(binding.loadingAnimationView);
+
 	}
 
 	@Override
