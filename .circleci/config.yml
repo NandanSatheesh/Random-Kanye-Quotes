@@ -1,0 +1,57 @@
+version: 2
+jobs:
+  build:
+    resource_class: 2xlarge
+    branches:
+      only:
+        - master
+    working_directory: ~/code
+    docker:
+      - image: circleci/android:api-28-alpha
+    environment:
+      JVM_OPTS: -Xmx4608m
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"'
+    steps:
+      - checkout
+      - run:
+          name: Set ANDROID_HOME
+          command:  echo sdk.dir = $ANDROID_HOME > local.properties
+      - run:
+          name: Install dependencies
+          command: pip install awscli --upgrade --user
+      - run:
+          name: Export Path
+          command: export PATH=~/.local/bin:$PATH
+      - run:
+          name: Set minify system variable
+          command: echo 'export MINIFY_ENABLED="true"' >> $BASH_ENV
+
+      - run:
+          name: Keystore step1
+          command: ~/.local/bin/aws s3 cp s3://bouncebuildkey/release.keystore app/
+      - run:
+          name: Keystore step2
+          command: ~/.local/bin/aws s3 cp s3://bouncebuildkey/signing.properties app/
+
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+      - run:
+          name: Export Path
+          command: export PATH=~/.local/bin:$PATH
+      - run:
+          name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+          command: sudo chmod +x ./gradlew
+      - run:
+          name: Build APKS
+          command: ./gradlew --info assembleTESTINGDebug assemblePRODUCTIONRelease
+      - store_artifacts:
+          path: app/build/outputs/apk
+          destination: reports
+

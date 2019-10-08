@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Documents-Random-Kanye-Quotes.iml" filepath="$PROJECT_DIR$/Documents-Random-Kanye-Quotes.iml" group="Random-Kanye-Quotes" />
       <module fileurl="file://$PROJECT_DIR$/Random-Kanye-Quotes.iml" filepath="$PROJECT_DIR$/Random-Kanye-Quotes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Random-Kanye-Quotes-app.iml" filepath="$PROJECT_DIR$/app/Random-Kanye-Quotes-app.iml" group="Random-Kanye-Quotes/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
