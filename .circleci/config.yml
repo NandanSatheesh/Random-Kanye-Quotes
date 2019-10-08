@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    resource_class: 2xlarge
+    resource_class: large
     branches:
       only:
         - master
